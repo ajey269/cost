@@ -1,0 +1,180 @@
+<pre>
+
+B<- table(A)  #table with freqency
+print(B)
+x<- names(B) #only values
+print(x)
+
+x<- as.numeric(x)  #converst string in number
+print(x)
+
+y<- as.numeric(B)  # removes gives only freqency
+print(y)
+
+z<- rbind(x,y)
+d<-dim(z)
+print(d)
+max_val <- max(y)
+for(i in 1:d[2]){
+  if(z[2,i] == max_val)
+    print(paste(z[1,i]))
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+cat('\014')
+x<-c(rep(6,2),rep(10,3),rep(12,4),rep(14,5),rep(24,4))
+print('Data set:')
+print(x)
+
+#standard deviation
+print(mean(x))
+print(x-1)
+print(sum(x))
+print(sd(x))
+print(length(x))
+nr<-sum((x-mean(x))^2)
+dr<-(length(x)-1)
+sd_x<-sqrt(nr/dr)
+print(paste("standard deviation of given data set is :",round((sd_x),4)))
+
+
+
+print("--------------------------------------------------------")
+
+#variance
+
+nr<-sum((x-mean(x))^2)
+dr<-(length(x)-1)
+var_x <-nr/dr
+print(paste("variance of given data is",round((var_x),4)))
+
+
+
+
+
+#covariance 
+
+x<-c(2,8,18,20,28,30)
+y<-c(5,12,18,23,45,50)
+print("x")
+print("y")
+print(y)
+
+cov_xy<- sum((x-mean(x))*(y-mean(y-mean(y))))/(length(x)-1)
+print(paste("covariance of given data ",round((cov_xy),4)))
+
+
+
+
+
+data<-read.csv("book6.csv")
+print(data)
+
+q1<-data$QUIZ1
+q2<-data$QUIZ2
+
+sdc<-sd(q2)
+print(round(sdc,4))
+
+vara<- var(q1)
+print(round(vara,4))
+
+varb<- var(q2)
+print(round(varb,4))
+
+covpm<-con(q1,q2)
+print(covpm)
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+library(e1071)
+cat('\014')
+data<- read.csv('book8.csv')
+print(data)
+print("_________________________________")
+x<-data$Class_Mark
+f<-data$Frequency
+x<-c(rep(x,f))
+print(x)
+sk<-skewness(x)
+sk<- round(sk,4)
+
+print(paste("skewness-",sk))   
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+cat('\014')
+data<-read.csv("book9.csv")
+print('Chi Squared Test')
+
+print(data)
+
+x<- data$Observed_Frequency
+a<- chisq.test(x)
+print(a)
+
+
+
+
+print("-------------------------------------------------------")
+
+data<-read.csv('book10.csv')
+print("contigency table")
+
+print(data)
+
+c1<- data$Recover
+c2<-data$Do_Not_Recover
+m<- as.table(cbind(c1,c2))
+
+print("without yates correction:")
+
+x<- chisq.test(m,correct=FALSE)
+print(x)
+
+print('________________________________________________')
+
+print('with yates correction')
+
+x<-chisq.test(m)
+print(x)
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+cat('\014')
+print('Example 1 : Binomial Distribution')
+print('n=6, p=0.5, P[X>=2]? ')
+n=6
+p=0.5
+x=2
+ans=dbinom(x,n,p)
+print(paste('P[X>=2]=',round(ans,4)))
+print('---------------------------------')
+print('Example 2 : Binomial Distribution')
+print('n=6, p=0.5, P[X>=4]? ')
+n=6
+p=0.5
+x=3
+ans=1-pbinom(x,n,p)
+print(paste('P[X>=4]=',round(ans,4)))
+print('---------------------------------')
+print('Example 3 : Binomial Distribution')
+print('n=5, p=0.4, P[X<=2]? ')
+n=5
+p=0.4
+x = 2 
+ans=pbinom(x,n,p)
+print(paste('P[X<=2]=',round(ans,4)))
+print('---------------------------------')
+print('Example 4 : Normal Distribution')
+print('mu =20.5 , sigma = 5.5 , P(X<25)? ')
+ans=pnorm(25,mean =20.5,sd = 5.5)
+print(paste('P(X<25)=',round(ans,4)))
+print('mu =20.5 , sigma = 5.5 , P(X>30)? ')
+ans=1-pnorm(30,mean =20.5,sd=5.5)
+print(paste('P(X>30)=',round(ans,4)))
+
+
+</pre>
